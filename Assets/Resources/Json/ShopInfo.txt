@@ -1,0 +1,33 @@
+{
+  "info":
+    [
+      {
+        "id": 1,
+        "itemInfo": {"id":3,"num":10},
+        "priceType": 1,
+        "price": 100,
+        "tips": "一组生命药水"
+      },
+      {
+        "id": 2,
+        "itemInfo": {"id":4,"num":11},
+        "priceType": 1,
+        "price": 2,
+        "tips": "一组回蓝药水"
+      },
+      {
+        "id": 3,
+        "itemInfo": {"id":5,"num":99},
+        "priceType": 2,
+        "price": 1,
+        "tips": "一组强化武器宝石"
+      },
+      {
+        "id": 4,
+        "itemInfo": {"id":6,"num":88},
+        "priceType": 2,
+        "price": 1,
+        "tips": "一组强化防具宝石"
+      }
+    ]
+}
