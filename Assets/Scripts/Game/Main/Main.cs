@@ -8,5 +8,6 @@ public class Main : MonoBehaviour
     {
         GameDataMgr.Instance.Init();
         UIManager.Instance.ShowPanel<MainPanel>("MainPanel", E_UI_Layer.Bot);
+        BagMgr.Instance.Init();
     }
 }

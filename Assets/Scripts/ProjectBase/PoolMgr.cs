@@ -19,7 +19,7 @@ public class PoolData
     public void PushObj(GameObject obj)
     {
         poolList.Add(obj);
-        obj.transform.parent = baseObj.transform;
+        obj.transform.SetParent(baseObj.transform, false);
         obj.SetActive(false);
     }
 
@@ -29,7 +29,7 @@ public class PoolData
         obj = poolList[0];
         poolList.RemoveAt(0);
         obj.SetActive(true);
-        obj.transform.parent = null;
+        obj.transform.SetParent(null);
         return obj;
     }
 }
@@ -61,7 +61,7 @@ public class PoolMgr : Singleton<PoolMgr>
         {
             poolObj = new GameObject("Pool");
         }
-        obj.transform.parent = poolObj.transform;
+        obj.transform.SetParent(poolObj.transform, false);
 
         obj.SetActive(false);
         if (poolDic.ContainsKey(name))

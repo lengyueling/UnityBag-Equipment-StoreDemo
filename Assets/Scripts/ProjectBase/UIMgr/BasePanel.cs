@@ -40,7 +40,7 @@ public class BasePanel : MonoBehaviour
 
     }
 
-    protected T GetControl<T>(string controlName) where T : UIBehaviour
+    public T GetControl<T>(string controlName) where T : UIBehaviour
     {
         if (controlDic.ContainsKey(controlName))
         {

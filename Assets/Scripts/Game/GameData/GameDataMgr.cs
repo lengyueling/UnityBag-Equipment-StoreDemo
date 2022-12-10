@@ -93,7 +93,7 @@ public class Player
         gem = 999;
         pro = 99;
         items = new List<ItemInfo>() { new ItemInfo() { id = 3, num = 10 }, new ItemInfo() { id = 4, num = 5 } };
-        equips = new List<ItemInfo>() { new ItemInfo() { id = 1, num = 1 }, new ItemInfo() { id = 2, num = 1 } };
+        equips = new List<ItemInfo>() { new ItemInfo() { id = 1, num = 1 }, new ItemInfo() { id = 2, num = 1 }, new ItemInfo() { id = 1, num = 1 }, new ItemInfo() { id = 7, num = 1 } };
         gems = new List<ItemInfo>() { new ItemInfo() { id = 5, num = 2 }, new ItemInfo() { id = 6, num = 30 } };
         nowEquips = new List<ItemInfo>();
     }

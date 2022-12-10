@@ -637,10 +637,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemHead: {fileID: 9112479063373271446}
   itemNeck: {fileID: 7624340977021958822}
-  ItemWeapon: {fileID: 7338251035497952357}
-  ItemCloth: {fileID: 2862734704081325540}
-  ItemTrousers: {fileID: 9062955023204795971}
-  ItemShose: {fileID: 6931676227081178620}
+  itemWeapon: {fileID: 7338251035497952357}
+  itemCloth: {fileID: 2862734704081325540}
+  itemTrousers: {fileID: 9062955023204795971}
+  itemShose: {fileID: 6931676227081178620}
 --- !u!1 &1768566445862203361
 GameObject:
   m_ObjectHideFlags: 0

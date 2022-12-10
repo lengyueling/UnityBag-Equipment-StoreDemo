@@ -6,10 +6,10 @@ public class RolePanel : BasePanel
 {
     public ItemCell itemHead;
     public ItemCell itemNeck;
-    public ItemCell ItemWeapon;
-    public ItemCell ItemCloth;
-    public ItemCell ItemTrousers;
-    public ItemCell ItemShose;
+    public ItemCell itemWeapon;
+    public ItemCell itemCloth;
+    public ItemCell itemTrousers;
+    public ItemCell itemShose;
 
     protected override void OnClick(string btnName)
     {
@@ -31,6 +31,12 @@ public class RolePanel : BasePanel
     public void UpdateRolePanel()
     {
         List<ItemInfo> nowEquips = GameDataMgr.Instance.playerInfo.nowEquips;
+        itemHead.InitInfo(null);
+        itemNeck.InitInfo(null);
+        itemWeapon.InitInfo(null);
+        itemCloth.InitInfo(null);
+        itemTrousers.InitInfo(null);
+        itemShose.InitInfo(null);
         Item itemInfo;
         for (int i = 0; i < nowEquips.Count; i++)
         {
@@ -41,19 +47,19 @@ public class RolePanel : BasePanel
                     itemHead.InitInfo(nowEquips[i]);
                     break;
                 case (int)E_Item_Type.Neck:
-                    itemHead.InitInfo(nowEquips[i]);
+                    itemNeck.InitInfo(nowEquips[i]);
                     break;
                 case (int)E_Item_Type.Weapon:
-                    itemHead.InitInfo(nowEquips[i]);
+                    itemWeapon.InitInfo(nowEquips[i]);
                     break;
                 case (int)E_Item_Type.Cloth:
-                    itemHead.InitInfo(nowEquips[i]);
+                    itemCloth.InitInfo(nowEquips[i]);
                     break;
                 case (int)E_Item_Type.Trousers:
-                    itemHead.InitInfo(nowEquips[i]);
+                    itemTrousers.InitInfo(nowEquips[i]);
                     break;
                 case (int)E_Item_Type.Shoes:
-                    itemHead.InitInfo(nowEquips[i]);
+                    itemShose.InitInfo(nowEquips[i]);
                     break;
             }
         }

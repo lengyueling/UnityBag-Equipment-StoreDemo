@@ -51,7 +51,7 @@ public class BagPanel : BasePanel
         ChangeType(E_Bag_Type.Item);
     }
 
-    private void ChangeType(E_Bag_Type type)
+    public void ChangeType(E_Bag_Type type)
     {
         List<ItemInfo> info = GameDataMgr.Instance.playerInfo.items;
         switch (type)

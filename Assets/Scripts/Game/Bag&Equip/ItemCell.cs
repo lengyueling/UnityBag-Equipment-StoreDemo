@@ -17,16 +17,39 @@ public enum E_Item_Type
 
 public class ItemCell : BasePanel
 {
-    private ItemInfo itemInfo;
+    private ItemInfo _itemInfo;
+    public ItemInfo itemInfo
+    {
+        get
+        {
+            return _itemInfo;
+        }
+    }
+    private bool isDragOpen = false;
+
     public E_Item_Type equipType = E_Item_Type.Bag;
 
     public void InitInfo(ItemInfo info)
     {
-        this.itemInfo = info;
+        this._itemInfo = info;
+        if (info == null)
+        {
+            GetControl<Image>("Icon").color = new Color(0, 0, 0, 0);
+            return;
+        }
         GetControl<Image>("Icon").color = new Color(1, 1, 1, 1);
         Item itemData = GameDataMgr.Instance.GetItemInfo(info.id);
         GetControl<Image>("Icon").sprite = ResMgr.Instance.Load<Sprite>("Icon/" + itemData.icon);
-        GetControl<Text>("Num").text = info.num.ToString();
+        if (equipType == E_Item_Type.Bag)
+        {
+            GetControl<Text>("Num").text = info.num.ToString();
+        }
+
+        if (itemData.type == (int)E_Bag_Type.Equip && isDragOpen == false)
+        {
+            isDragOpen = true;
+            OpenDragEvent();
+        }
     }
     protected override void Awake()
     {
@@ -34,6 +57,10 @@ public class ItemCell : BasePanel
         GetControl<Image>("Icon").color = new Color(0, 0, 0, 0);
         UIManager.AddCustomEventListener(GetControl<Image>("BK"), EventTriggerType.PointerEnter, EnterItemCell);
         UIManager.AddCustomEventListener(GetControl<Image>("BK"), EventTriggerType.PointerExit, ExitItemCell);
+    }
+
+    private void OpenDragEvent()
+    {
         UIManager.AddCustomEventListener(GetControl<Image>("BK"), EventTriggerType.BeginDrag, BeginDragItemCell);
         UIManager.AddCustomEventListener(GetControl<Image>("BK"), EventTriggerType.Drag, DragItemCell);
         UIManager.AddCustomEventListener(GetControl<Image>("BK"), EventTriggerType.EndDrag, EndDragItemCell);
@@ -41,36 +68,24 @@ public class ItemCell : BasePanel
 
     private void EnterItemCell(BaseEventData date)
     {
-        if (itemInfo == null)
-        {
-            return;
-        }
-        UIManager.Instance.ShowPanel<TipsPanel>("TipsPanel", E_UI_Layer.Top, (panel) =>
-        {
-            panel.InitInfo(itemInfo);
-            panel.transform.position = GetControl<Image>("Icon").transform.position;
-        });
+        EventCenter.Instance.EventTrigger("ItemCellEnter", this);
     }
     private void ExitItemCell(BaseEventData date)
     {
-        if (itemInfo == null)
-        {
-            return;
-        }
-        UIManager.Instance.HidePanel("TipsPanel");
+        EventCenter.Instance.EventTrigger("ItemCellExit", this);
     }
 
     private void BeginDragItemCell(BaseEventData date)
     {
-
+        EventCenter.Instance.EventTrigger("ItemCellBeginDrag", this);
     }
     private void DragItemCell(BaseEventData date)
     {
-
+        EventCenter.Instance.EventTrigger("ItemCellDrag", date);
     }
 
     private void EndDragItemCell(BaseEventData date)
     {
-
+        EventCenter.Instance.EventTrigger("ItemCellEndDrag", this);
     }
 }
